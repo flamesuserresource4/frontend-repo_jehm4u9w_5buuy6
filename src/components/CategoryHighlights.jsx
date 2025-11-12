@@ -11,15 +11,20 @@ const images = {
 
 export default function CategoryHighlights() {
   return (
-    <section className="py-12">
+    <section className="py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Explore Collections</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="flex items-end justify-between mb-6">
+          <h2 className="text-2xl md:text-3xl font-serif text-gray-900">Explore Collections</h2>
+          <Link to="/shop" className="text-sm text-emerald-700 hover:underline">View all</Link>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((c) => (
-            <Link key={c.slug} to={`/category/${c.slug}`} className="relative group rounded-xl overflow-hidden">
+            <Link key={c.slug} to={`/category/${c.slug}`} className="relative group rounded-2xl overflow-hidden ring-1 ring-emerald-100">
               <img src={images[c.slug]} alt={c.name} className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-3 left-3 text-white font-medium">{c.name}</div>
+              <div className="absolute bottom-3 left-3 text-white font-medium backdrop-blur-sm px-2 py-1 rounded-md bg-black/20">
+                {c.name}
+              </div>
             </Link>
           ))}
         </div>
